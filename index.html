@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 100px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .form-group .error {
+            color: red;
+            margin-top: 5px;
+        }
+
+        .form-group .success {
+            color: green;
+            margin-top: 5px;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4267B2;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .signup-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 999;
+        }
+
+        .signup-modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            width: 300px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .signup-modal-content h3 {
+            margin-top: 0;
+        }
+
+        .signup-modal-content input[type="text"],
+        .signup-modal-content input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .signup-modal-content button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4267B2;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Facebook</h2>
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter your username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password">
+        </div>
+        <div class="form-group">
+            <button onclick="login()">Login</button>
+        </div>
+        <div id="error-msg" class="error"></div>
+        <div class="form-group">
+            <button onclick="openSignupModal()">Sign up</button>
+        </div>
+    </div>
+
+    <div id="signup-modal" class="signup-modal">
+        <div class="signup-modal-content">
+            <h3>Sign Up</h3>
+            <div class="form-group">
+                <label for="signup-username">Username:</label>
+                <input type="text" id="signup-username" placeholder="Choose a username">
+            </div>
+            <div class="form-group">
+                <label for="signup-email">Email:</label>
+                <input type="text" id="signup-email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="signup-password">Password:</label>
+                <input type="password" id="signup-password" placeholder="Choose a password">
+            </div>
+            <div class="form-group">
+                <button onclick="submitSignup()">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            if (username.trim() === '' || password.trim() === '') {
+                document.getElementById('error-msg').innerHTML = 'Username or password is empty.';
+            } else {
+                // Perform login logic here
+            }
+        }
+
+        function openSignupModal() {
+            document.getElementById('signup-modal').style.display = 'block';
+        }
+
+        function submitSignup() {
+            var signupUsername = document.getElementById('signup-username').value;
+            var signupEmail = document.getElementById('signup-email').value;
+            var signupPassword = document.getElementById('signup-password').value;
+
+            // Perform signup logic here
+
+            // Show the filled details in the modal
+            var modalContent = document.querySelector('.signup-modal-content');
+            modalContent.innerHTML = `
+                <h3>Sign Up</h3>
+                <p>Username: ${signupUsername}</p>
+                <p>Email: ${signupEmail}</p>
+                <p>Password: ${signupPassword}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
